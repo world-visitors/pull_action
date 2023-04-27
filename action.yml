@@ -1,0 +1,25 @@
+name: 'Checkout'
+description: 'Checkout a Git repository at a particular version'
+inputs:
+  repository:
+    description: 'Repository name with owner. For example, actions/checkout'
+    default: false
+  ref:
+    description: >
+      The branch, tag or SHA to checkout. When checking out the repository that
+      triggered a workflow, this defaults to the reference or SHA for that
+      event.  Otherwise, uses the default branch.
+  ssh-key:
+    description: >
+      SSH key used to fetch the repository. The SSH key is configured with the local
+      git config, which enables your scripts to run authenticated git commands.
+      The post-job step removes the SSH key.
+      We recommend using a service account with the least permissions necessary.
+      [Learn more about creating and using
+      encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
+branding:
+  icon: 'download-cloud'
+  color: 'yellow'
